@@ -1,0 +1,44 @@
+@startuml casos-de-uso
+' Diagrama de casos de uso (provisional) - Cartelera de Cine
+left to right direction
+skinparam packageStyle rectangle
+
+actor Cliente
+actor Empleado
+actor "Temporizador" as T <<sistema>>
+
+rectangle "Sistema Cartelera de Cine" {
+  usecase "Iniciar sesión" as UC1
+  usecase "Registrarse" as UC2
+  usecase "Consultar cartelera" as UC3
+  usecase "Ver sesiones y horarios" as UC4
+  usecase "Seleccionar asientos" as UC5
+  usecase "Bloquear asientos" as UC6
+  usecase "Pagar entrada (simulado)" as UC7
+  usecase "Generar QR" as UC8
+  usecase "Ver mis entradas (QR)" as UC9
+  usecase "Escanear QR" as UC10
+  usecase "Validar entrada" as UC11
+  usecase "Consultar aforo" as UC12
+  usecase "Liberar reservas caducadas" as UC13
+}
+
+Cliente --> UC1
+Cliente --> UC2
+Cliente --> UC3
+Cliente --> UC4
+Cliente --> UC5
+Cliente --> UC7
+Cliente --> UC9
+
+Empleado --> UC1
+Empleado --> UC2
+Empleado --> UC10
+Empleado --> UC12
+
+T --> UC13
+
+UC5 ..> UC6 : <<include>>
+UC7 ..> UC8 : <<include>>
+UC10 ..> UC11 : <<include>>
+@enduml
